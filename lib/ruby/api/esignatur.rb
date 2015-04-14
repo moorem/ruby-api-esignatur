@@ -1,4 +1,5 @@
-require "ruby/api/esignatur/version"
+require_relative "esignatur/version"
+require_relative "esignatur/order"
 
 module Ruby
   module Api
