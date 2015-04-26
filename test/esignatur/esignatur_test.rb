@@ -25,6 +25,15 @@ class EsignaturTest < Minitest::Test
     end
   end
   
+  def test_download_document
+    VCR.use_cassette('get_document') do
+      headers = set_headers
+      client = Esignatur::APIClient.new(headers)
+      result = client.get_document(Id: "c00771af-359c-4628-a72d-185d20f4e608", DocumentIndex: 0)
+      assert_kind_of Hash, result
+    end
+  end
+  
   
   private
   
