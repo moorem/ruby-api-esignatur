@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ankur@moorem.com"]
   spec.summary       = %q{Electronic Signature using esignatur.dk}
   spec.description   = %q{The esignatur.dk provides methods for developers to integrate API in any ruby application.}
-  spec.homepage      = "http://funnyobjects.com"
+  spec.homepage      = "http://moorem.com"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
