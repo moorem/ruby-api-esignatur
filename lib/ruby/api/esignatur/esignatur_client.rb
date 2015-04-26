@@ -20,13 +20,23 @@ module Esignatur
       end
       JSON.parse(response.body)
     end
+    
+    def order_status email, order_no
+      connection = set_connection
+      response = connection.get do |req|
+        req.url '/Status/Get/{'+order_no+'}'
+        req.headers.merge!(@headers)
+        req.body = "{ 'Email': '#{email}' }"
+      end
+      JSON.parse(response.body)
+    end
+    
 
     private
     
     def set_connection
       Faraday.new(:url => API_URL) do |faraday|
         faraday.request  :url_encoded
-        #faraday.response :logger
         faraday.adapter  Faraday.default_adapter
       end
     end
