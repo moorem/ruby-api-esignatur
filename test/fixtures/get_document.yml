@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.esignatur.dk/Order/Pending
+    uri: https://api.esignatur.dk/Pades/Download
     body:
       encoding: UTF-8
-      string: '{ ''Email'': ''info@kreditmatch.dk'' }'
+      string: '{"Id":"c00771af-359c-4628-a72d-185d20f4e608","DocumentIndex":0}'
     headers:
       User-Agent:
       - Faraday v0.9.1
@@ -19,13 +19,13 @@ http_interactions:
       - '*/*'
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: '89e9feaa-b10f-475b-964c-96be87c6b613: Order is not completed: c00771af-359c-4628-a72d-185d20f4e608'
     headers:
       Cache-Control:
       - private
       Content-Type:
-      - application/json; charset=utf-8
+      - text/html
       Server:
       - Microsoft-IIS/7.5
       X-Aspnetmvc-Version:
@@ -41,13 +41,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Sun, 26 Apr 2015 19:48:43 GMT
+      - Sun, 26 Apr 2015 19:18:48 GMT
       Content-Length:
-      - '506'
+      - '11'
     body:
       encoding: UTF-8
-      string: '{"PendingOrders":[{"DocumentStatus":"Active","EndDate":"\/Date(1435179472000)\/","Reference":"6575bdbfxhxwZK430625","Email":"info@kreditmatch.dk","CustomData":null,"CustomInvoiceNumber":null,"DocumentsCount":1,"ConsentsCount":0,"AttachmentsCount":0,"Steps":[{"Signers":[{"Title":null,"Name":"Arjun
-        Test","Email":"ankur@moorem.com","Identification":"36064595","Status":"Pending","SignDate":null,"CustomData":null}],"EndDate":null,"StartDate":null,"ReminderDate":null,"ReminderInterval":0,"Locked":false}]}]}'
+      string: Bad Request
     http_version: 
-  recorded_at: Sun, 26 Apr 2015 19:48:45 GMT
+  recorded_at: Sun, 26 Apr 2015 19:18:50 GMT
 recorded_with: VCR 2.9.3
