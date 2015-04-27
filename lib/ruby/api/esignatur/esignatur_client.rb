@@ -34,12 +34,13 @@ module Esignatur
     def get_document options = {}
       connection = set_connection
       response = connection.post do |req|
-        req.url '/Pades/Download'
+        req.url URI.encode('/Pades/Download')
         req.headers.merge!(@headers)
         req.body = options.to_json
       end
       JSON.parse(response.body)
     end
+
 
     private
     

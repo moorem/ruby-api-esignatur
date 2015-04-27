@@ -5,7 +5,7 @@ class EsignaturTest < Minitest::Test
   def test_exists
     assert Esignatur::APIClient
   end
-  
+
   def test_pending_orders
     VCR.use_cassette('pending_orders') do
       headers = set_headers
@@ -15,7 +15,7 @@ class EsignaturTest < Minitest::Test
       assert_kind_of Array, result["PendingOrders"]
     end
   end
-  
+
   def test_order_status
     VCR.use_cassette('order_status') do
       headers = set_headers
@@ -29,7 +29,7 @@ class EsignaturTest < Minitest::Test
     VCR.use_cassette('get_document') do
       headers = set_headers
       client = Esignatur::APIClient.new(headers)
-      result = client.get_document(Id: "c00771af-359c-4628-a72d-185d20f4e608", DocumentIndex: 0)
+      result = client.get_document(Id: "34e6100f-51fa-4599-ae70-eda5385dc166", DocumentIndex: 0)
       assert_kind_of Hash, result
     end
   end
