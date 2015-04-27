@@ -1,6 +1,6 @@
 # Ruby::Api::Esignatur
 
-TODO: Write a gem description
+TODO: This gem is under development and will be published soon on https://rubygems.org/
 
 ## Installation
 
