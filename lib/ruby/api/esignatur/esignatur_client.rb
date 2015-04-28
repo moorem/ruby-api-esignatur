@@ -12,16 +12,15 @@ module Esignatur
       @connection = set_connection
     end
     
-    
     def create_order options = {}
       response = @connection.post do |req|
-        req.url '/Order/Pending'
+        req.url URI.encode('/Order/Create')
         req.headers.merge!(@headers)
-        req.body = {Email: email}.to_json
+        puts options.to_json
+        req.body = options.to_json
       end
       JSON.parse(response.body)
     end
-    
     
     def pending_orders email
       response = @connection.post do |req|
