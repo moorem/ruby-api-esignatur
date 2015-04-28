@@ -9,11 +9,22 @@ module Esignatur
     
     def initialize(headers)
       @headers = headers
+      @connection = set_connection
     end
     
+    
+    def create_order options = {}
+      response = @connection.post do |req|
+        req.url '/Order/Pending'
+        req.headers.merge!(@headers)
+        req.body = {Email: email}.to_json
+      end
+      JSON.parse(response.body)
+    end
+    
+    
     def pending_orders email
-      connection = set_connection
-      response = connection.post do |req|
+      response = @connection.post do |req|
         req.url '/Order/Pending'
         req.headers.merge!(@headers)
         req.body = {Email: email}.to_json
@@ -22,8 +33,7 @@ module Esignatur
     end
     
     def order_status email, order_no
-      connection = set_connection
-      response = connection.get do |req|
+      response = @connection.get do |req|
         req.url URI.encode('/Status/Get/{'+order_no+'}')
         req.headers.merge!(@headers)
         req.body = {Email: email}.to_json
@@ -32,8 +42,7 @@ module Esignatur
     end
     
     def get_document options = {}
-      connection = set_connection
-      response = connection.post do |req|
+      response = @connection.post do |req|
         req.url URI.encode('/Pades/Download')
         req.headers.merge!(@headers)
         req.body = options.to_json
@@ -43,7 +52,7 @@ module Esignatur
 
 
     private
-    
+        
     def set_connection
       Faraday.new(:url => API_URL) do |faraday|
         faraday.request  :url_encoded
