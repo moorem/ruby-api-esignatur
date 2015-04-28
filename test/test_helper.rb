@@ -1,5 +1,6 @@
 require './lib/ruby/api/esignatur'
 require 'minitest/autorun'
+require 'base64'
 require 'webmock/minitest'
 require 'vcr'
 

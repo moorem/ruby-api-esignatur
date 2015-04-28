@@ -5,7 +5,54 @@ class EsignaturTest < Minitest::Test
   def test_exists
     assert Esignatur::APIClient
   end
+  
+  def test_create_order
+    VCR.use_cassette('create_order') do
+      headers = set_headers
+      client = Esignatur::APIClient.new(headers)
+      
+      pdf_encoded = Base64.encode64(open("sample_document.pdf").to_a.join)
 
+      signing_body = {CreatorId: "9208-2002-2-315851760650",
+         SenderEmail: "info@kreditmatch.dk",
+         CommonNote: "This is a test order for signing.",
+         EndDate: Time.now,
+         Documents: [
+           {
+             title: "Signing Contract",
+             Filename: "contract.pdf",
+             DocumentFormat: "Pdf",
+             DocumentData: pdf_encoded
+           }
+         ],
+         steps: [
+           {
+             Signers: [
+               {
+                 name: 'Name1',
+                 email: 'developer@moorem.com',
+                 identification: '23434234234234'
+               }
+             ]
+           },
+           {
+             Signers: [
+               {
+                 name: 'Name2',
+                 email: 'ankur@moorem.com',
+                 identification: '23434234234234'
+               }
+             ]
+           }
+         ]
+      }
+
+      result = client.create_order(signing_body)
+      assert_kind_of Hash, result
+
+    end
+  end
+  
   def test_pending_orders
     VCR.use_cassette('pending_orders') do
       headers = set_headers
@@ -24,7 +71,7 @@ class EsignaturTest < Minitest::Test
       assert_kind_of Hash, result
     end
   end
-  
+
   def test_download_document
     VCR.use_cassette('get_document') do
       headers = set_headers
@@ -33,7 +80,6 @@ class EsignaturTest < Minitest::Test
       assert_kind_of Hash, result
     end
   end
-  
   
   private
   
