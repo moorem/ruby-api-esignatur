@@ -16,7 +16,7 @@ module Esignatur
       response = connection.post do |req|
         req.url '/Order/Pending'
         req.headers.merge!(@headers)
-        req.body = "{ 'Email': '#{email}' }"
+        req.body = {Email: email}.to_json
       end
       JSON.parse(response.body)
     end
@@ -26,7 +26,7 @@ module Esignatur
       response = connection.get do |req|
         req.url URI.encode('/Status/Get/{'+order_no+'}')
         req.headers.merge!(@headers)
-        req.body = "{ 'Email': '#{email}' }"
+        req.body = {Email: email}.to_json
       end
       JSON.parse(response.body)
     end
