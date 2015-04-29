@@ -16,7 +16,6 @@ module Esignatur
       response = @connection.post do |req|
         req.url URI.encode('/Order/Create')
         req.headers.merge!(@headers)
-        puts options.to_json
         req.body = options.to_json
       end
       JSON.parse(response.body)
