@@ -69,6 +69,6 @@ time of a major release, support for that Ruby version may be dropped.
 ##Credits
 [![moorem.com: Ruby on Rails, iOS and Android developers](http://www.moorem.com/images/logo.png "Ruby on Rails, iOS and Android developers")](http://moorem.com)
 
-Copyright (c) 2015 [moorem.com](http://moorem.com "Ruby on Rails, iOS and Android developers"), released under the [LICENSE](https://github.com/moorem/ruby-api-esignatur/blob/master/LICENSE.txt).for details.
+Copyright (c) 2015 [moorem.com](http://moorem.com "Ruby on Rails, iOS and Android developers"), released under the [LICENSE](https://github.com/moorem/ruby-api-esignatur/blob/master/LICENSE.txt).
 
 
