@@ -62,8 +62,9 @@ timely fashion. If critical issues for a particular implementation exist at the
 time of a major release, support for that Ruby version may be dropped.
 
 ## <a name="todos">Todos</a>
-* Need to fully implement testing
-* Need to add a history log for additional contributers
+* Need to add other API methods.
+* Need to fully test all the methods.
+* Need to add a history log for additional contributers.
 
 
 ##Credits
