@@ -1,8 +1,12 @@
 # Ruby::Api::Esignatur
 
-TODO: This gem is under development and will be published soon on https://rubygems.org/
+Get your documents digitalized with https://www.esignatur.dk (esignatur is Denmark's safest digital signing solution for both private and public companies).
+
+This gem is a Ruby wrapper for the esignatur API & provides all supported methods. Get the API details here: https://api.esignatur.dk/
 
 ## Installation
+
+If integrating with Rails 3.x, 4.x version:
 
 Add this line to your application's Gemfile:
 
@@ -18,9 +22,12 @@ Or install it yourself as:
 
     $ gem install ruby-api-esignatur
 
-## Usage
+## Usage Examples
 
-TODO: Write usage instructions here
+
+## Submitting an Issue
+We use the [GitHub issue tracker ](https://github.com/moorem/ruby-api-esignatur/issues) to track bugs and features.
+
 
 ## Contributing
 
@@ -30,3 +37,36 @@ TODO: Write usage instructions here
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 # ruby-api-esignatur
+
+
+## <a name="rubies">Supported Rubies</a>
+This library aims to support the following Ruby implementations:
+
+* Ruby >= 1.9
+* [JRuby](http://www.jruby.org/)
+* [Rubinius](http://rubini.us/)
+* [Ruby Enterprise Edition](http://www.rubyenterpriseedition.com/)
+
+If something doesn't work on one of these interpreters, it should be considered
+a bug.
+
+This library may inadvertently work (or seem to work) on other Ruby
+implementations, however support will only be provided for the versions listed
+above.
+
+If you would like this library to support another Ruby version, you may
+volunteer to be a maintainer. Being a maintainer entails making sure all tests
+run and pass on that implementation. When something breaks on your
+implementation, you will be personally responsible for providing patches in a
+timely fashion. If critical issues for a particular implementation exist at the
+time of a major release, support for that Ruby version may be dropped.
+
+## <a name="todos">Todos</a>
+* Need to fully implement testing
+* Need to add a history log for additional contributers
+
+## <a name="copyright">Copyright</a>
+Copyright (c) 2015 Moorem Technologies Pvt. Ltd.
+
+See [LICENSE](https://github.com/moorem/ruby-api-esignatur/blob/master/LICENSE.txt) for details.
+
