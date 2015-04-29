@@ -65,8 +65,10 @@ time of a major release, support for that Ruby version may be dropped.
 * Need to fully implement testing
 * Need to add a history log for additional contributers
 
-## <a name="copyright">Copyright</a>
-Copyright (c) 2015 Moorem Technologies Pvt. Ltd.
 
-See [LICENSE](https://github.com/moorem/ruby-api-esignatur/blob/master/LICENSE.txt) for details.
+##Credits
+[![moorem.com: Ruby on Rails, iOS and Android developers](http://www.moorem.com/images/logo.png "Ruby on Rails, iOS and Android developers")](http://moorem.com)
+
+Copyright (c) 2015 [moorem.com](http://moorem.com "Ruby on Rails, iOS and Android developers"), released under the [LICENSE](https://github.com/moorem/ruby-api-esignatur/blob/master/LICENSE.txt).for details.
+
 
