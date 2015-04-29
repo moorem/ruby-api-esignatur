@@ -22,7 +22,73 @@ Or install it yourself as:
 
     $ gem install ruby-api-esignatur
 
-## Usage Examples
+## Get Started
+
+ 1. Get started with [Signup] https://www.esignatur.dk/kom-i-gang/
+ 2. Before creating signing orders, you should have:
+    * SenderEmail (E-mail address of sender)
+    * CreatorId (Id of document creator).
+    * Identification (Cvr/Cpr of signer).
+
+##Usage
+
+####Headers:
+
+Set the default headers with your signatur ID:
+
+```ruby
+  headers = {'Content-Type' => 'application/json',
+    'X-Esignatur-Id' => '1aaXXXX-XXXX-XXXX-XXXX-XXXXXXXXX044'}
+```
+
+#####Create Order:
+ 
+ 1. Get the Base64 encoded document of the signing pdf. For eg:
+
+ ```ruby
+    pdf_encoded = Base64.encode64(open("sample_document.pdf").to_a.join)
+ ```
+ 2. Get all the signing details in a hash (Check https://api.esignatur.dk/Documentation/Order for more details):
+  
+ ```ruby
+    signing_body = {CreatorId: "9208-XXXX-X-XXXXXXXXX650",
+         SenderEmail: "sender@example.com",
+         CommonNote: "This is a test order for signing.",
+         EndDate: Time.now,
+         Documents: [
+           {
+             title: "Signing Contract",
+             Filename: "contract.pdf",
+             DocumentFormat: "Pdf",
+             DocumentData: pdf_encoded
+           }
+         ],
+         steps: [
+           {
+             Signers: [
+               {
+                 name: 'Name1',
+                 email: 'signer@example.com',
+                 identification: '23434234234234'
+               }
+             ]
+           }
+         ]
+      }
+
+ ```
+ 
+ 3. Create request api client with headers:
+ 
+ ```ruby
+    client = Esignatur::APIClient.new(headers)
+ ```
+ 
+ 4. Send the creating order request with order details:
+  ```ruby 
+    response = client.create_order(signing_body)
+  ```
+ 
 
 
 ## Submitting an Issue
