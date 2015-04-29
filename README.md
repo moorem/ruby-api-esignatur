@@ -41,7 +41,7 @@ Set the default headers with your signatur ID:
     'X-Esignatur-Id' => '1aaXXXX-XXXX-XXXX-XXXX-XXXXXXXXX044'}
 ```
 
-#####Create Order:
+##### Creating Signing Order (https://api.esignatur.dk/Documentation/Order):
  
  1. Get the Base64 encoded document of the signing pdf. For eg:
 
@@ -88,6 +88,26 @@ Set the default headers with your signatur ID:
   ```ruby 
     response = client.create_order(signing_body)
   ```
+  
+##### Get All pending orders:
+  ```ruby
+  response = client.pending_orders("sender@example.com") #E-mail address of sender. Set to blank disable e-mail filtering.
+  ```
+  
+##### Get Order Status:
+  ```ruby
+  response = client.order_status(("sender@example.com", "c00XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXX608")
+  # More details on: https://api.esignatur.dk/Documentation/Status
+  ```
+  
+##### Download Signed Document:
+  Note: The output from these methods tends to be quite large.
+  ```ruby
+  response = client.get_document(Id: "34XXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX166", DocumentIndex: 0)
+  # More details on: https://api.esignatur.dk/Documentation/Pades
+  ```
+  
+  
  
 
 
