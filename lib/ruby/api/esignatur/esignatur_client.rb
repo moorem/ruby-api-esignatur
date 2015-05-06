@@ -56,6 +56,17 @@ module Esignatur
       end
       JSON.parse(response.body)
     end
+    
+    def update_signer options = {}
+      response = @connection.post do |req|
+        req.url URI.encode('/Signer/Update')
+        req.headers.merge!(@headers)
+        req.body = options.to_json
+      end
+      response.body
+    end
+    
+    
 
 
     

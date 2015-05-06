@@ -90,6 +90,16 @@ class EsignaturTest < Minitest::Test
     end
   end
   
+  def test_update_signer
+    VCR.use_cassette('update_signer') do
+      headers = set_headers
+      client = Esignatur::APIClient.new(headers)
+      result = client.update_signer("OrderId" => "eecef1fd-3acc-4f2f-a469-7476d47e2161", "OldEmail" => "shank27@gmail.com", "Email" => "ankur@moorem.com")
+      assert_kind_of String, ""
+      assert_equal result, ""
+    end
+  end
+  
   private
   
   def set_headers
