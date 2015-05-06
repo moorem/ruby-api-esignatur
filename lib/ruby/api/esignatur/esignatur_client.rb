@@ -47,7 +47,18 @@ module Esignatur
       end
       JSON.parse(response.body)
     end
+    
+    def validate_document options = {}
+      response = @connection.post do |req|
+        req.url URI.encode('/PdfValidator/Validate')
+        req.headers.merge!(@headers)
+        req.body = options.to_json
+      end
+      JSON.parse(response.body)
+    end
 
+
+    
 
     private
         

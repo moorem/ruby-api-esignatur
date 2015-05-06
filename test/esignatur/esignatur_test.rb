@@ -49,7 +49,6 @@ class EsignaturTest < Minitest::Test
 
       result = client.create_order(signing_body)
       assert_kind_of Hash, result
-
     end
   end
   
@@ -78,6 +77,17 @@ class EsignaturTest < Minitest::Test
       client = Esignatur::APIClient.new(headers)
       result = client.get_document(Id: "34e6100f-51fa-4599-ae70-eda5385dc166", DocumentIndex: 0)
       assert_kind_of Hash, result
+    end
+  end
+  
+  def test_validate_pdf_document
+    VCR.use_cassette('validate_pdf_document') do
+      headers = set_headers
+      client = Esignatur::APIClient.new(headers)
+      pdf_encoded = Base64.encode64(open("sample_document.pdf").to_a.join)
+      result = client.validate_document(DocumentData: pdf_encoded)
+      assert_kind_of Hash, result
+      assert_equal result, {"Status"=>"Ok", "Errors"=>""}
     end
   end
   
