@@ -10,8 +10,7 @@ class EsignaturTest < Minitest::Test
     VCR.use_cassette('create_order') do
       headers = set_headers
       client = Esignatur::APIClient.new(headers)
-      
-      pdf_encoded = Base64.encode64(open("sample_document.pdf").to_a.join)
+      pdf_encoded = File.read("pdf_base64.txt")
 
       signing_body = {CreatorId: "9208-2002-2-315851760650",
          SenderEmail: "info@kreditmatch.dk",
